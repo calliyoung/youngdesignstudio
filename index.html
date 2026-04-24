@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Young Digital Studio | Web Design & Branding · Owensboro, KY</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+  /* ===========================
+     CSS CUSTOM PROPERTIES
+  =========================== */
+  :root {
+    --blue:        #5BA4CF;
+    --blue-light:  #A8CEDD;
+    --blue-pale:   #D8ECF4;
+    --blue-dark:   #2E6F9A;
+    --cream:       #FFFBF8;
+    --gray:        #7A8695;
+    --gray-light:  #B8C2CC;
+    --gray-pale:   #ECEFF2;
+    --gray-dark:   #3D4A56;
+    --navy:        #1C2B38;
+    --white:       #FFFFFF;
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body:    'DM Sans', system-ui, sans-serif;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 14px;
+
+    --shadow-sm:  0 1px 4px rgba(28,43,56,0.08);
+    --shadow-md:  0 4px 18px rgba(28,43,56,0.10);
+    --shadow-lg:  0 10px 40px rgba(28,43,56,0.14);
+
+    --transition: 0.25s ease;
+  }
+
+  /* ===========================
+     RESET & BASE
+  =========================== */
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html { 
+    scroll-behavior: smooth;
+    scroll-padding-top: 0;
+    overflow-x: hidden;
+  }
+
+  /* Remove tap highlight on mobile */
+  a, button { -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--navy);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; }
+
+  /* ===========================
+     TYPOGRAPHY HELPERS
+  =========================== */
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: block;
+    margin-bottom: 0.9rem;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+  }
+
+  /* ===========================
+     NAVIGATION
+  =========================== */
+  nav {
+    position: sticky;
+    z-index: 999;
+    background: var(--white);
+    border-bottom: 1px solid var(--blue-pale);
+    box-shadow: var(--shadow-sm);
+    top: -1px;
+  }
+
+  .nav-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--navy);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .logo span {
+    color: var(--blue);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.2rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--gray);
+    letter-spacing: 0.04em;
+    transition: color var(--transition);
+  }
+
+  .nav-links a:hover {
+    color: var(--blue-dark);
+  }
+
+  .btn-nav {
+    background: var(--blue);
+    color: var(--white) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.05em;
+    transition: background var(--transition), transform var(--transition) !important;
+  }
+
+  .btn-nav:hover {
+    background: var(--blue-dark) !important;
+    transform: translateY(-1px);
+  }
+
+  /* ===========================
+     HERO
+  =========================== */
+  .hero {
+    background: linear-gradient(160deg, var(--navy) 0%, #264559 100%);
+    min-height: 85vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    gap: 3rem;
+    padding: 6rem 4rem;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative circles */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    border: 1px solid rgba(91,164,207,0.18);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    border: 1px solid rgba(91,164,207,0.10);
+    pointer-events: none;
+  }
+
+  .hero .eyebrow {
+    color: var(--blue-light);
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    color: var(--white);
+    margin-bottom: 1.4rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--blue-light);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.58);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    width: fit-content;  
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: var(--white);
+    padding: 0.88rem 2rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: background var(--transition), transform var(--transition);
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.28);
+    color: rgba(255,255,255,0.85);
+    padding: 0.88rem 2rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: border-color var(--transition), color var(--transition);
+    display: inline-block;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--blue-light);
+    color: var(--blue-light);
+  }
+
+  /* Hero Visual Panel */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-stack {
+    position: relative;
+    width: 310px;
+    height: 310px;
+  }
+
+  .hcard {
+    position: absolute;
+    border-radius: var(--radius-lg);
+    padding: 1.4rem 1.6rem;
+  }
+
+  .hcard-back {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(91,164,207,0.2);
+    width: 250px;
+    top: 0;
+    left: 0;
+  }
+
+  .hcard-mid {
+    background: rgba(91,164,207,0.12);
+    border: 1px solid rgba(91,164,207,0.32);
+    width: 270px;
+    top: 24px;
+    left: 20px;
+  }
+
+  .hcard-front {
+    background: var(--blue);
+    width: 200px;
+    bottom: 0;
+    right: 0;
+    padding: 1.2rem 1.4rem;
+  }
+
+  .hcard-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.4rem;
+  }
+
+  .hcard-mid .hcard-label,
+  .hcard-back .hcard-label {
+    color: rgba(168,206,221,0.6);
+  }
+
+  .hcard-val {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--white);
+  }
+
+  .hcard-front .hcard-label {
+    color: rgba(255,255,255,0.65);
+  }
+
+  .hcard-front .hcard-val {
+    font-size: 1rem;
+  }
+
+  .pip-row {
+    display: flex;
+    gap: 5px;
+    margin-top: 0.8rem;
+  }
+
+  .pip {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(91,164,207,0.3);
+  }
+
+  .pip.on { background: var(--blue-light); }
+
+  /* ===========================
+     SERVICE STRIP
+  =========================== */
+  .strip {
+    background: var(--blue);
+    padding: 0.9rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .strip-item {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    white-space: nowrap;
+    opacity: 0.88;
+  }
+
+  .strip-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    flex-shrink: 0;
+  }
+
+  /* ===========================
+     SECTION WRAPPER
+  =========================== */
+  .section-wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.4rem;
+    color: var(--navy);
+    margin-top: 0.3rem;
+  }
+
+  /* ===========================
+     ABOUT
+  =========================== */
+  #about {
+    background: var(--white);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-content h2 {
+    font-size: 2.4rem;
+    color: var(--navy);
+    margin-bottom: 1.2rem;
+  }
+
+  .about-content p {
+    font-size: 0.98rem;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+    margin-top: 2.4rem;
+  }
+
+  .stat-box {
+    border-left: 3px solid var(--blue);
+    padding-left: 1rem;
+  }
+
+  .stat-box .num {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .stat-box .lbl {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 0.25rem;
+    font-weight: 300;
+  }
+
+  .about-visual {
+    background: var(--gray-pale);
+    border-radius: var(--radius-lg);
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--blue-pale);
+  }
+
+  .about-visual::before {
+    content: 'YDS';
+    font-family: var(--font-display);
+    font-size: 9rem;
+    color: rgba(91,164,207,0.07);
+    position: absolute;
+    user-select: none;
+  }
+
+  .monogram {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--blue);
+    z-index: 1;
+  }
+
+  .mono-sub {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 0.5rem;
+    z-index: 1;
+  }
+
+  /* ===========================
+     SERVICES
+  =========================== */
+  #services {
+    background: var(--navy);
+  }
+
+  #services .section-header h2 {
+    color: var(--white);
+  }
+
+  #services .eyebrow {
+    color: var(--blue-light);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+
+  .svc-card {
+    border: 1px solid rgba(91,164,207,0.15);
+    border-radius: var(--radius-md);
+    padding: 2rem 1.8rem;
+    transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    cursor: default;
+  }
+
+  .svc-card:hover {
+    border-color: rgba(91,164,207,0.45);
+    background: rgba(91,164,207,0.05);
+    transform: translateY(-4px);
+  }
+
+  .svc-icon {
+    width: 46px;
+    height: 46px;
+    background: rgba(91,164,207,0.12);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+  }
+
+  .svc-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--blue-light);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .svc-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--white);
+    margin-bottom: 0.7rem;
+  }
+
+  .svc-card p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.48);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .svc-tag {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 0.68rem;
+    color: var(--blue-light);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(91,164,207,0.35);
+    padding-bottom: 1px;
+  }
+
+  /* ===========================
+     PROCESS
+  =========================== */
+  #process {
+    background: var(--cream);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    position: relative;
+  }
+
+  /* connector line */
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: calc(12.5% + 26px);
+    right: calc(12.5% + 26px);
+    height: 1px;
+    background: linear-gradient(to right, var(--blue-pale), var(--blue-pale));
+    z-index: 0;
+  }
+
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.4rem;
+    box-shadow: 0 0 0 6px var(--cream), 0 0 0 7px var(--blue-pale);
+  }
+
+  .step h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .step p {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ===========================
+     PORTFOLIO TEASER
+  =========================== */
+  #portfolio {
+    background: var(--gray-pale);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+
+  .port-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(91,164,207,0.15);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .port-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .port-thumb {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .port-thumb-1 { background: linear-gradient(135deg, #D8ECF4, #A8CEDD); color: var(--blue-dark); }
+  .port-thumb-2 { background: linear-gradient(135deg, #ECEFF2, #B8C2CC); color: var(--gray-dark); }
+  .port-thumb-3 { background: linear-gradient(135deg, var(--blue-pale), #D8ECF4); color: var(--navy); }
+
+  .port-body {
+    padding: 1.2rem 1.4rem 1.4rem;
+  }
+
+  .port-body .tag {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--blue);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+
+  .port-body h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .port-body p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ===========================
+     CONTACT
+  =========================== */
+  #contact {
+    background: var(--white);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-left h2 {
+    font-size: 2.4rem;
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+  }
+
+  .contact-sub {
+    font-size: 0.98rem;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 2.2rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .detail-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--blue-pale);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .detail-icon svg {
+    width: 17px;
+    height: 17px;
+    stroke: var(--blue-dark);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .detail-text {
+    font-size: 0.92rem;
+    color: var(--gray-dark);
+  }
+
+  /* Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .form-group label {
+    font-size: 0.73rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-family: var(--font-body);
+    font-size: 0.93rem;
+    background: var(--cream);
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius-sm);
+    padding: 0.72rem 0.95rem;
+    color: var(--navy);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(91,164,207,0.15);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--gray-light);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  .btn-submit {
+    background: var(--blue);
+    color: var(--white);
+    padding: 0.92rem 2rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.93rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition);
+    margin-top: 0.4rem;
+  }
+
+  .btn-submit:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+  }
+
+  /* ===========================
+     FOOTER
+  =========================== */
+  footer {
+    background: var(--navy);
+    padding: 2rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .footer-logo span {
+    color: var(--blue-light);
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    transition: color var(--transition);
+  }
+
+  .footer-links a:hover {
+    color: var(--blue-light);
+  }
+
+  /* ===========================
+     SCROLL ANIMATIONS
+  =========================== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-up-delay-1 { transition-delay: 0.1s; }
+  .fade-up-delay-2 { transition-delay: 0.2s; }
+  .fade-up-delay-3 { transition-delay: 0.3s; }
+
+  /* ===========================
+     RESPONSIVE
+  =========================== */
+  .hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+  /* ===========================
+     TABLET (max 900px)
+  =========================== */
+  @media (max-width: 900px) {
+
+    /* Nav */
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-bottom: 2px solid var(--blue-pale);
+      padding: 1.5rem 2rem 2rem;
+      gap: 0;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-110%);
+      transition: transform 0.3s ease;
+      z-index: 998;
+    }
+
+    .nav-links.open { transform: translateY(0); }
+
+    .nav-links li { border-bottom: 1px solid var(--gray-pale); }
+    .nav-links li:last-child { border-bottom: none; margin-top: 1rem; }
+
+    .nav-links a {
+      display: block;
+      padding: 0.9rem 0;
+      font-size: 1rem;
+    }
+
+    .btn-nav {
+      display: block;
+      text-align: center;
+      padding: 0.75rem 1rem !important;
+    }
+
+    .hamburger { display: flex; }
+
+    /* Hero */
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 4rem 2rem;
+      text-align: center;
+      min-height: unset;
+    }
+
+    .hero h1 { font-size: 2.6rem; }
+    .hero-sub { margin: 0 auto 2rem; max-width: 500px; }
+    .hero-btns { justify-content: center; }
+    .hero-visual { display: none; }
+
+    /* About */
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-visual { height: 220px; order: -1; }
+
+    /* Services */
+    .services-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Process */
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .process-steps::before { display: none; }
+
+    /* Portfolio */
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Contact */
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+    /* Section spacing */
+    .section-wrap { padding: 4rem 2rem; }
+  }
+
+  /* ===========================
+     MOBILE (max 600px)
+  =========================== */
+  @media (max-width: 600px) {
+
+    /* Typography */
+    .hero h1 { font-size: 2rem; line-height: 1.2; }
+    .section-header h2,
+    .about-content h2,
+    .contact-left h2 { font-size: 1.8rem; }
+    .hero-sub { font-size: 0.95rem; }
+
+    /* Spacing */
+    .section-wrap { padding: 3rem 1.25rem; }
+
+    /* Nav */
+    .nav-inner { padding: 0 1.25rem; }
+    .logo { font-size: 1.1rem; }
+
+    /* Hero */
+    .hero { padding: 3rem 1.25rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero-btns {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .btn-primary,
+    .btn-ghost {
+      width: 100%;
+      max-width: 280px;
+      text-align: center;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+    }
+
+    /* Strip */
+    .strip { gap: 1rem; padding: 0.8rem 1rem; flex-wrap: wrap; justify-content: center; }
+    .strip-dot { display: none; }
+    .strip-item { font-size: 0.72rem; }
+
+    /* About */
+    .about-visual { height: 180px; }
+    .about-stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-box .num { font-size: 1.5rem; }
+
+    /* Services — single column */
+    .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .svc-card { padding: 1.4rem 1.2rem; }
+
+    /* Process — single column */
+    .process-steps { grid-template-columns: 1fr; gap: 2rem; }
+    .step { padding: 0 0.5rem; }
+
+    /* Portfolio — single column */
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .port-thumb { height: 140px; }
+
+    /* Contact form */
+    .form-row { grid-template-columns: 1fr; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      font-size: 1rem;   /* prevents iOS zoom on focus */
+      padding: 0.85rem 0.95rem;
+    }
+    .btn-submit {
+      font-size: 1rem;
+      padding: 1rem;
+    }
+
+    /* Footer */
+    .footer-inner { flex-direction: column; text-align: center; gap: 0.75rem; }
+    .footer-links { justify-content: center; gap: 1.2rem; }
+    .footer-copy { font-size: 0.72rem; }
+  }
+
+  /* ===========================
+     SMALL PHONES (max 380px)
+  =========================== */
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 1.75rem; }
+    .logo { font-size: 1rem; }
+    .section-wrap { padding: 2.5rem 1rem; }
+    .svc-card { padding: 1.2rem 1rem; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ===========================
+     NAVIGATION
+=========================== -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Young<span>Digital</span> Studio</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="btn-nav">Get a Quote</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ===========================
+     HERO
+=========================== -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">· Est. 2025 ·</span>
+    <h1>Design That <em>Works.</em><br>Brands That Last.</h1>
+    <p class="hero-sub">Hi, I'm a CIT professor and freelance web designer based in Owensboro, KY. I build websites and brands that help local businesses show up online with confidence. No agency overhead, just personal attention from start to finish.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Let's Work Together</a>
+      <a href="#portfolio" class="btn-ghost">See My Work</a>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ===========================
+     SERVICE STRIP
+=========================== -->
+<div class="strip">
+  <span class="strip-item">Web Design</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Web Development</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Logo Design</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Custom Branding</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Database Administration</span>
+  <span class="strip-dot"></span>
+  <span class="strip-item">Inventory Management</span>
+</div>
+
+
+<!-- ===========================
+     ABOUT
+=========================== -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="monogram">YDS</div>
+        <div class="mono-sub">Young Digital Studio</div>
+      </div>
+      <div class="about-content fade-up">
+        <span class="eyebrow">About Me</span>
+        <h2>A Professor Who<br>Builds Real Things</h2>
+        <p>I'm a Computer Information Technology professor with a passion for graphic design. I started Young Digital Studio because I noticed many small businesses in our community with websites that don't reflect the quality of what they do.</p>
+        <p>When you work with me, you work with me, not a team you'll never meet. I handle everything personally: design, development, branding, and support. Based right here in Owensboro, I care about this community and the businesses that make it thrive.</p>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="num">3+</div>
+            <div class="lbl">Years Teaching CIT</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">Local</div>
+            <div class="lbl">Owensboro-Based</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     SERVICES
+=========================== -->
+<section id="services">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="eyebrow">What I Do</span>
+      <h2>Services Tailored to Your Business</h2>
+    </div>
+    <div class="services-grid">
+
+      <div class="svc-card fade-up">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Web Design</h3>
+        <p>Beautiful, responsive websites designed to reflect your brand and turn visitors into customers. I build every site mobile-first, fast, and accessible.</p>
+        <span class="svc-tag">Custom Design</span>
+      </div>
+
+      <div class="svc-card fade-up fade-up-delay-1">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Web Development</h3>
+        <p>Clean, well-written code built to last. From simple landing pages to full web applications. I handle all the technical work so you don't have to.</p>
+        <span class="svc-tag">Full-Stack</span>
+      </div>
+
+      <div class="svc-card fade-up fade-up-delay-2">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3 C8 8 8 16 12 21"/><path d="M12 3 C16 8 16 16 12 21"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
+        </div>
+        <h3>Logo & Branding</h3>
+        <p>A logo that means something, paired with a complete brand identity — colors, fonts, and guidelines that keep your businesses look consistent accross all platforms.</p>
+        <span class="svc-tag">Brand Identity</span>
+      </div>
+
+      <div class="svc-card fade-up">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3>Database Administration</h3>
+        <p>A well-built database is the backbone of any good application. I design, build, and manage databases that are efficient and easy to manage.</p>
+        <span class="svc-tag">Organization</span>
+      </div>
+
+      <div class="svc-card fade-up fade-up-delay-1">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Graphic Design</h3>
+        <p>I am happy to help with any and all graphic design needs. Flyers, menu updates, signage, and more!</p>
+        <span class="svc-tag">All Things Design</span>
+      </div>
+
+      <div class="svc-card fade-up fade-up-delay-2">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <h3>Maintenance & Support</h3>
+        <p>Ongoing updates, security, and support are part of how I work, you always have someone to call.</p>
+        <span class="svc-tag">Ongoing Care</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     PROCESS
+=========================== -->
+<section id="process">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="eyebrow">How It Works</span>
+      <h2>My Simple 4-Step Process</h2>
+    </div>
+    <div class="process-steps">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <h4>Discovery Call</h4>
+        <p>We start with a free conversation to talk through your business, your goals, and what you're hoping a website or brand can do for you.</p>
+      </div>
+      <div class="step fade-up fade-up-delay-1">
+        <div class="step-num">2</div>
+        <h4>Proposal & Plan</h4>
+        <p>I put together a proposal with scope, timeline, and pricing. No hidden fees, no surprises, just a straightforward agreement we both feel good about.</p>
+      </div>
+      <div class="step fade-up fade-up-delay-2">
+        <div class="step-num">3</div>
+        <h4>Design & Build</h4>
+        <p>I get to work and keep you in the loop with regular updates and check-ins. Your feedback shapes the outcome every step of the way.</p>
+      </div>
+      <div class="step fade-up fade-up-delay-3">
+        <div class="step-num">4</div>
+        <h4>Launch & Support</h4>
+        <p>Your site goes live and I stay involved. For a small monthly fee, I handle updates, security, and any changes you need. No obligation for support of that does not fit your business model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     PORTFOLIO TEASER
+=========================== -->
+<section id="portfolio">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="eyebrow">My Work</span>
+      <h2>My Latest Project</h2>
+    </div>
+    <div class="portfolio-grid">
+      <div class="port-card fade-up">
+        <div class="port-thumb port-thumb-1" style="background: linear-gradient(135deg, #1a3a4a, #2e6f9a); color: #A8CEDD; font-size: 1.4rem; letter-spacing: 0.02em;">Mr. D's</div>
+        <div class="port-body">
+          <span class="tag">Web Design &amp; Development</span>
+          <h4><a href="https://mrds-henderson.com" target="_blank" style="color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--blue-pale);">Mr. D's Drive-In · Henderson, KY</a></h4>
+          <p>A clean, mobile-friendly website for a beloved local restaurant, featuring their a custom menu design & new logo, hours, contact info, and a direct link to their Facebook community. Built to be simple and easy to maintain.</p>
+        </div>
+      </div>
+      <div class="port-card fade-up fade-up-delay-1">
+        <div class="port-thumb port-thumb-2" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 0.5rem; background: var(--gray-pale);">
+          <span style="font-size: 1.4rem; color: var(--gray-light); font-family: var(--font-body); font-weight: 300; letter-spacing: 0.05em;">YoungDesign Studio</span>
+        </div>
+        <div class="port-body">
+          <span class="tag">This Website!</span>
+          <h4>Created with mobile and desktop clients in mind</h4>
+          <p>This is a single page website; however, I can also create multi-page sites. Whatevery works best for you, I can do!</p>
+        </div>
+      </div>
+      <div class="port-card fade-up fade-up-delay-2">
+        <div class="port-thumb port-thumb-3" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 0.5rem; background: var(--blue-pale);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span style="font-size: 0.8rem; color: var(--blue); font-family: var(--font-body); font-weight: 300; letter-spacing: 0.05em;">Coming Soon</span>
+        </div>
+        <div class="port-body">
+          <span class="tag">Your Project Here</span>
+          <h4>Your Business Could Be Next</h4>
+          <p>I'm actively taking on new clients in the Owensboro and Western Kentucky area. Let's talk about what I can build for you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     CONTACT
+=========================== -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="contact-grid">
+
+      <div class="contact-left fade-up">
+        <span class="eyebrow">Get in Touch</span>
+        <h2>Let's Talk About Your Project</h2>
+        <p class="contact-sub">I'd love to hear about your business and what you're hoping to build. I'll get back with you as soon as possible. No sales pitch, just a real conversation.</p>
+
+        <div class="contact-detail">
+          <div class="detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <span class="detail-text">(270) 313-2596</span>
+        </div>
+
+        <div class="contact-detail">
+          <div class="detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="detail-text">youngdigitalstudio@gmail.com</span>
+        </div>
+
+        <div class="contact-detail">
+          <div class="detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span class="detail-text">Owensboro, Kentucky</span>
+        </div>
+      </div>
+
+      <div class="contact-form fade-up fade-up-delay-1">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="jane@yourbusiness.com">
+        </div>
+        <div class="form-group">
+          <label>Business Name</label>
+          <input type="text" placeholder="Your Business Name">
+        </div>
+        <div class="form-group">
+          <label>Service Interested In</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Web Design &amp; Development</option>
+            <option>Logo Design</option>
+            <option>Brand Identity</option>
+            <option>Database Management</option>
+            <option>Full Package</option>
+            <option>Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Project</label>
+          <textarea placeholder="Tell me a little about your business and what you're looking to accomplish..."></textarea>
+        </div>
+        <button class="btn-submit">Send Message →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Young<span>Digital</span> Studio</div>
+    <p class="footer-copy">© 2025 Young Digital Studio · Owensboro, KY · Designed &amp; built by me, personally.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===========================
+     SCROLL ANIMATION SCRIPT
+=========================== -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  // Close menu when a nav link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
